@@ -24,13 +24,13 @@ JSON is a kind of **Object** notation. When programmers deal with the json strin
 So json2cpp can help programmer to auto-generate the C++ codes for transferring form JSON to C++ and conversely.
 json2cpp is a script tool written in python language. It uses [pyparsing][pyparsing-link] to parse a Modeling file to C++ files and [RapidJSON][rapidjson-link], [jsoncpp][jsoncpp-link] for C++ to parse the JSON.
 
-##Installation before use
+## Installation before use
 * json2cpp depends on Python and pyparsing, so make sure that [Python][python-link] has been installed on your System
 * For installing  [pyparsing][pyparsing-link], use "[easy_install][setuptools-link]" to install it through command line:
 ``` shell
 user@localhost $ sudo easy_install pyparsing
 ```
-##Download & Run Sample
+## Download & Run Sample
 Thie simple instruction shows a common running command of json2cpp
 ``` shell
 git clone https://github.com/nasacj/json2cpp
@@ -45,12 +45,12 @@ make
 See the `LICENSE` file for details. In summary, json2cpp is licensed under the MIT license, or public domain if desired and recognized in your jurisdiction.
 json2cpp uses [RapidJSON][rapidjson-link] & [jsoncpp][jsoncpp-link], which 2 are both under MIT license.
 
-##Usage
+## Usage
 Before use json2cpp, a definition file is required:
 ###Define the class
 As sample.jsf file shows, user can define the class structure as C++ sytle. The classes are according to the JSON objects:
 
-####Sample JSON Object for Request
+#### Sample JSON Object for Request
 ``` json
 {
     "sourceId": 1,
@@ -82,7 +82,7 @@ As sample.jsf file shows, user can define the class structure as C++ sytle. The 
     }
 }
 ```
-####Sample JSON Object for Response:
+#### Sample JSON Object for Response:
 ``` json
 {
     "code": "200",
@@ -112,7 +112,7 @@ As sample.jsf file shows, user can define the class structure as C++ sytle. The 
     }
 }
 ```
-####Definitation of Class, Request and Response:
+#### Definitation of Class, Request and Response:
 ``` cpp
 //namespace Definition
 namespace jsf;
@@ -191,7 +191,7 @@ Interface AddInvoice {
 	};
 };
 ```
-###Generate the C++ Class files
+### Generate the C++ Class files
 ``` shell
 ./json2cpp.py rapidjson sample.jsf dir_test
 ```
@@ -211,7 +211,7 @@ dir_test
           ......
 ```
 
-###Class Usage
+### Class Usage
 base.h: defines the basic object access:
 >* Field<>:     Every json object in interface class are all Field type. It has Get/SetVaule()
 >* IRequest:  *ToJson()* serialize C++ Object to JSON string
@@ -227,7 +227,7 @@ InvoiceTicket.h: user define class InvoiceTicket implemetion.
 
 all you have to do is include header file "json2cpp.h", and use the classes generated.
 
-####C++ Sample Code:
+#### C++ Sample Code:
 ``` cpp
 #include "json2cpp.h"
 
@@ -280,7 +280,7 @@ if(ret != json2cpp::ERR_OK)
 }
 ```
 
-###Grammar
+### Grammar
 
 ``` cpp
 //namespace, allow 0 or more
@@ -313,13 +313,13 @@ Interface {interface_name}{
 
 
 ```
-####Conventions：
+#### Conventions：
 1. **()** means the grammar token is optional, it can be defined 0 or 1
 2. **{}** means variable name
 3. **@** means comments
 4. **[]** means specified value of the set
 
-####Details：
+#### Details：
 0. **{name_space}** means C++ style namespace
 1. **{class_name}**, **{interface_name}**, **{field_name}**, **{json_filed_name}** means self-defined struct/class, Interface, Field Name, JSON Field name. They can be any valid string
 2. User can define 1 or more **class**, the definitation sequence should follow the C++ style
@@ -337,7 +337,7 @@ Interface {interface_name}{
 
 6. Supports C++ sytle comments like ```//comments``` and ```/*comments*/``` , the commots will be ignored when being parsing.
 
-####Anonymous Array
+#### Anonymous Array
 json2cpp supports anonymous array Request/Response, like the following JSON string:
 ``` json
 [
@@ -398,6 +398,6 @@ Interface AddWare{
 	Response(Address){};
 };
 ```
-#####Inheritance Grammar Explanation
+##### Inheritance Grammar Explanation
 * If ***(class_type)*** follows ***Request/Response***, the  Fields in Request/Response is optional (**ZeroOrMore**).
 * If *Inheritance* is not used, Fields in Request/Response is **OneOrMore**
