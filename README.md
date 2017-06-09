@@ -47,7 +47,7 @@ json2cpp uses [RapidJSON][rapidjson-link] & [jsoncpp][jsoncpp-link], which 2 are
 
 ## Usage
 Before use json2cpp, a definition file is required:
-###Define the class
+### Define the class
 As sample.jsf file shows, user can define the class structure as C++ sytle. The classes are according to the JSON objects:
 
 #### Sample JSON Object for Request
@@ -367,7 +367,7 @@ Interface AddWare{
 When Request/Respons is an anonymous array JSON string, the ***@jsonname*** MUST be defined as "" (null), and the Field should ONLY contains ONE AND ONLY ONE ***vector*** type class or normal type (e.g. vector<*Address*>, vector<*int*>).
 
 
-####Inheritance
+#### Inheritance
 User can use defined Class to be inherited to *Request/Response*, which means user can reuse the definitation of a Class, put the fields of that class into Request/Response.
 For instance, ***Address*** has 2 fields: **{int, string}**. If the *Request* and *Response* are both required as a single ***Address*** Object (NOT an Object contains an Address). So the definitation file can be written as following:
 ``` cpp
